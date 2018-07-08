@@ -46,7 +46,7 @@ public class DemoMessagesActivity extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
-        messagesAdapter.addToStart(MessageFixtures.getTextMessage(), true);
+        messagesAdapter.addToStart(MessageFixtures.getBotTextMessage(), true);
     }
 
 
