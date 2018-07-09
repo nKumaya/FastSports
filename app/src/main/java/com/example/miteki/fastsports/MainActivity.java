@@ -19,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Struct;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -118,5 +120,20 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void setTextToReccomendSportsCard(int cardId){
+        String eventName = "";
+        String eventInfo = "";
+        switch(cardId){
+            case 0:
+                eventName = "";
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
+
     }
 }

@@ -45,6 +45,13 @@ public class HogeActivity extends DemoMessagesActivity
     public boolean onSubmit(CharSequence input) {
         super.messagesAdapter.addToStart(
                 MessageFixtures.getTextMessage(input.toString()), true);
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        super.messagesAdapter.addToStart(
+                MessageFixtures.getBotTextMessage("もう一度お願いします。"), true);
         return true;
     }
 
