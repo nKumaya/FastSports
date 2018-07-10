@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".HogeActivity" />
-        <activity android:name=".DemoMessagesActivity"></activity>
+        <activity android:name=".DemoMessagesActivity" />
+        <activity android:name=".EventDetailActivity"></activity>
     </application>
 
 </manifest>

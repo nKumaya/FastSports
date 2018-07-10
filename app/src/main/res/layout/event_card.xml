@@ -37,16 +37,17 @@
                 app:srcCompat="@mipmap/soccer" />
 
             <TextView
-                android:id="@+id/textBox"
+                android:id="@+id/eventNameBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
+                android:singleLine="true"
                 android:layout_marginBottom="25dp"
                 android:text="Soccer" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/eventInfoBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -54,6 +55,7 @@
                 android:textSize="10dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"
+                android:singleLine="true"
                 android:text="7月19日, 20:00, 港区" />
 
             <!--<TextView-->

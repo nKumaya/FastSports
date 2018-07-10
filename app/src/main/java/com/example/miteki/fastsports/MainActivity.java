@@ -37,11 +37,48 @@ public class MainActivity extends AppCompatActivity
             LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
             LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.event_card, null);
             CardView cardView = (CardView) linearLayout.findViewById(R.id.cardView);
-            TextView textBox = (TextView) linearLayout.findViewById(R.id.textBox);
-            textBox.setText("CardView" + i);
+            TextView eventNameBox = (TextView) linearLayout.findViewById(R.id.eventNameBox);
+            String eventName = setTextToReccomendSportsCard(i, "eventName");
+            eventNameBox.setText(eventName);
+            TextView eventInfoBox = (TextView) linearLayout.findViewById(R.id.eventInfoBox);
+            String eventInfo = setTextToReccomendSportsCard(i, "eventInfo");
+            eventInfoBox.setText(eventInfo);
+
             cardView.setTag(i);
 
             cardLinear.addView(linearLayout,i);
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(MainActivity.this, EventDetailActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
+
+        LinearLayout cardLinear2 = (LinearLayout)this.findViewById(R.id.cardLinear2);
+        cardLinear2.removeAllViews();
+        for(int i = 0; i< 3; i++) {
+            LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+            LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.event_card, null);
+            CardView cardView = (CardView) linearLayout.findViewById(R.id.cardView);
+            TextView eventNameBox = (TextView) linearLayout.findViewById(R.id.eventNameBox);
+            String eventName = setTextToReccomendSportsCard(i, "eventName");
+            eventNameBox.setText(eventName);
+            TextView eventInfoBox = (TextView) linearLayout.findViewById(R.id.eventInfoBox);
+            String eventInfo = setTextToReccomendSportsCard(i, "eventInfo");
+            eventInfoBox.setText(eventInfo);
+
+            cardView.setTag(i);
+
+            cardLinear2.addView(linearLayout,i);
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(MainActivity.this, EventDetailActivity.class);
+                    startActivity(intent);
+                }
+            });
         }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -122,18 +159,36 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    private void setTextToReccomendSportsCard(int cardId){
+    private String setTextToReccomendSportsCard(int cardId, String eventType){
         String eventName = "";
         String eventInfo = "";
-        switch(cardId){
-            case 0:
-                eventName = "";
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
+        if(eventType=="eventName"){
+            switch(cardId){
+                case 0:
+                    eventName = "フットサル@田町";
+                    break;
+                case 1:
+                    eventName = "【初心者歓迎】バスケやります！";
+                    break;
+                case 2:
+                    eventName = "のんびりヨガ";
+                    break;
+            }
+            return eventName;
         }
-
+        else{
+            switch(cardId){
+                case 0:
+                    eventInfo = "7月19日, 20:00~, 港区スポーツセンター";
+                    break;
+                case 1:
+                    eventInfo = "7月19日, 19:00~, 港区スポーツセンター";
+                    break;
+                case 2:
+                    eventInfo = "7月19日, 17:00~, 港区スポーツセンター";
+                    break;
+            }
+            return eventInfo;
+        }
     }
 }
