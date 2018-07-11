@@ -9,8 +9,8 @@ abstract class FixturesData {
 
     static ArrayList<String> avatars = new ArrayList<String>() {
         {
-            add("http://i.imgur.com/pv1tBmT.png");
-            add("http://i.imgur.com/pv1tBmT.png");
+            add("https://drive.google.com/file/d/1zcrAGgZToFZYQCM_lhq2xN6NgGdc5B-u/view?usp=sharing");
+//            add("http://i.imgur.com/pv1tBmT.png");
 
         }
     };

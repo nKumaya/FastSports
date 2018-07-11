@@ -31,6 +31,10 @@ public class User implements IUser{
         return avatar;
     }
 
+    public String getBotAvatar() {
+        return avatar;
+    }
+
     public boolean isOnline() {
         return online;
     }
