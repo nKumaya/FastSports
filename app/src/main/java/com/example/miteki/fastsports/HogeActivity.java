@@ -2,8 +2,10 @@ package com.example.miteki.fastsports;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,12 +20,20 @@ import com.stfalcon.chatkit.messages.MessageInput;
 import com.stfalcon.chatkit.messages.MessagesList;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import ai.api.AIServiceException;
+import ai.api.RequestExtras;
 import ai.api.android.AIConfiguration;
+import ai.api.android.AIDataService;
 import ai.api.android.GsonFactory;
+import ai.api.model.AIContext;
 import ai.api.model.AIError;
+import ai.api.model.AIEvent;
+import ai.api.model.AIRequest;
 import ai.api.model.AIResponse;
 import ai.api.model.Metadata;
 import ai.api.model.Result;
@@ -37,6 +47,8 @@ public class HogeActivity extends DemoMessagesActivity
 
     private static final String TAG = AIDialogActivity.class.getName();
     private AIDialog aiDialog;
+    private AIDataService aiDataService;
+
     private Gson gson = GsonFactory.getGson();
 
     public static void open(Context context) {
@@ -62,6 +74,7 @@ public class HogeActivity extends DemoMessagesActivity
 
         aiDialog = new AIDialog(this, config);
         aiDialog.setResultsListener(this);
+        aiDataService = new AIDataService(this, config);
     }
 
 
@@ -73,10 +86,7 @@ public class HogeActivity extends DemoMessagesActivity
 
     @Override
     public boolean onSubmit(CharSequence input) {
-        super.messagesAdapter.addToStart(
-                MessageFixtures.getTextMessage(input.toString()), true);
-        super.messagesAdapter.addToStart(
-                MessageFixtures.getBotTextMessage("もう一度お願いします。"), true);
+        sendRequest(input.toString());
         return true;
     }
 
@@ -94,6 +104,51 @@ public class HogeActivity extends DemoMessagesActivity
                     }
                 });
         this.messagesList.setAdapter(super.messagesAdapter);
+    }
+
+
+
+    private void sendRequest(String inputQuery) {
+
+        final String queryString = inputQuery;
+
+        if (TextUtils.isEmpty(queryString)) {
+//            onError(new AIError(getString(R.string.non_empty_query)));
+            return;
+        }
+
+        final AsyncTask<String, Void, AIResponse> task = new AsyncTask<String, Void, AIResponse>() {
+
+            private AIError aiError;
+
+            @Override
+            protected AIResponse doInBackground(final String... params) {
+                final AIRequest request = new AIRequest();
+                String query = params[0];
+
+                if (!TextUtils.isEmpty(query))
+                    request.setQuery(query);
+                RequestExtras requestExtras = null;
+
+                try {
+                    return aiDataService.request(request, requestExtras);
+                } catch (final AIServiceException e) {
+                    aiError = new AIError(e);
+                    return null;
+                }
+            }
+
+            @Override
+            protected void onPostExecute(final AIResponse response) {
+                if (response != null) {
+                    onResult(response);
+                } else {
+                    onError(aiError);
+                }
+            }
+        };
+
+        task.execute(queryString);
     }
 
     @Override
