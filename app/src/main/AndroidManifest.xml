@@ -2,18 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.miteki.fastsports">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
+        android:name=".AIApplication"
         android:allowBackup="true"
         android:icon="@mipmap/fastsports_icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
-            android:name=".MainActivity"
+            android:name=".AIDialogActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -24,7 +26,9 @@
         </activity>
         <activity android:name=".HogeActivity" />
         <activity android:name=".DemoMessagesActivity" />
-        <activity android:name=".EventDetailActivity"></activity>
+        <activity android:name=".EventDetailActivity" />
+        <!--<activity android:name=".AIDialog" />-->
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

@@ -153,6 +153,4 @@
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/guideline2"/>
 
-
-    <!-- TODO: イベント画像、イベント名、日時、メンバー、詳細、参加費、必要な用具　-->
 </android.support.constraint.ConstraintLayout>
