@@ -98,12 +98,10 @@ public class HogeActivity extends DemoMessagesActivity
 
     @Override
     public void onResult(final AIResponse response) {
-//        runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
                 Log.d(TAG, "onResult");
-
-//                resultTextView.setText(gson.toJson(response));
 
                 Log.i(TAG, "Received success response");
 
@@ -114,11 +112,14 @@ public class HogeActivity extends DemoMessagesActivity
 
                 final Result result = response.getResult();
                 Log.i(TAG, "Resolved query: " + result.getResolvedQuery());
-
+                messagesAdapter.addToStart(
+                        MessageFixtures.getTextMessage(result.getResolvedQuery()), true);
 
                 Log.i(TAG, "Action: " + result.getAction());
                 final String speech = result.getFulfillment().getSpeech();
                 Log.i(TAG, "Speech: " + speech);
+                messagesAdapter.addToStart(
+                        MessageFixtures.getBotTextMessage(result.getFulfillment().getSpeech()), true);
 //                TTS.speak(speech);
 
                 final Metadata metadata = result.getMetadata();
@@ -134,10 +135,9 @@ public class HogeActivity extends DemoMessagesActivity
                         Log.i(TAG, String.format("%s: %s", entry.getKey(), entry.getValue().toString()));
                     }
                 }
-//            }
+            }
 
-//        });
-
+        });
     }
 
     @Override

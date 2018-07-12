@@ -2,7 +2,7 @@ package com.example.miteki.fastsports;
 
 public abstract class Config {
     // copy this keys from your developer dashboard
-    public static final String ACCESS_TOKEN = "3485a96fb27744db83e78b8c4bc9e7b7";
+    public static final String ACCESS_TOKEN = "97e5f8a97d0f413796e77061c1928069";
 
     public static final LanguageConfig[] languages = new LanguageConfig[]{
             new LanguageConfig("ja", "b92617a3f82e4b52b3db44436d2d4b8b"),
