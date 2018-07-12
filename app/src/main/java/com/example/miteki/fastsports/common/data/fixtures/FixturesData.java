@@ -9,7 +9,7 @@ abstract class FixturesData {
 
     static ArrayList<String> avatars = new ArrayList<String>() {
         {
-            add("https://drive.google.com/file/d/1zcrAGgZToFZYQCM_lhq2xN6NgGdc5B-u/view?usp=sharing");
+            add("http://i.imgur.com/pv1tBmT.png");
 //            add("http://i.imgur.com/pv1tBmT.png");
 
         }
@@ -44,6 +44,15 @@ abstract class FixturesData {
     static final ArrayList<String> images = new ArrayList<String>() {
         {
             add("https://habrastorage.org/getpro/habr/post_images/e4b/067/b17/e4b067b17a3e414083f7420351db272b.jpg");
+        }
+    };
+
+    static final ArrayList<String> demoChatMessages = new ArrayList<String>(){
+        {
+            add("経験者中心でやれればと思います！詳細みてくださいね〜");
+            add("初参加です！大学時代やってました〜よろしくです");
+            add("よろしくお願いします！");
+            add("よろしく〜！");
         }
     };
 

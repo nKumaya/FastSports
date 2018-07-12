@@ -33,8 +33,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:textColor="@color/white"
         android:text="フットサル@田町"
+        android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,8 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:gravity="center"
-        android:textColor="@color/white"
         android:text="2018年7月19日, 20:00~21:00"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventName" />
@@ -59,8 +59,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:gravity="center"
-        android:textColor="@color/white"
         android:text="港区スポーツセンター"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventDateTime" />
@@ -71,8 +71,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:gravity="center"
-        android:textColor="@color/white"
         android:text="Lv. 4"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventLocation" />
@@ -85,12 +85,12 @@
         android:layout_marginEnd="148dp"
         android:layout_marginStart="148dp"
         android:background="@drawable/button_corners"
-        android:text="参加する"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
         android:minHeight="3dp"
         android:minWidth="40dp"
+        android:text="参加する"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +101,57 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="350dp" />
+        app:layout_constraintGuide_begin="330dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:text="参加メンバー"
+        android:textColor="@color/green_dark"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/guideline3" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="199dp"
+        android:layout_height="84dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@mipmap/user_icons" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="454dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="経験者歓迎です！毎週木曜日にやってます。社会人多めですが、学生さんもぜひ！"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/guideline2"/>
 
 
     <!-- TODO: イベント画像、イベント名、日時、メンバー、詳細、参加費、必要な用具　-->
