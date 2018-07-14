@@ -15,11 +15,17 @@ import com.example.miteki.fastsports.common.data.fixtures.MessageFixtures;
 import com.example.miteki.fastsports.model.Message;
 import com.example.miteki.fastsports.utils.AppUtils;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.stfalcon.chatkit.messages.MessageInput;
 import com.stfalcon.chatkit.messages.MessagesList;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Array;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +41,9 @@ import ai.api.model.AIError;
 import ai.api.model.AIEvent;
 import ai.api.model.AIRequest;
 import ai.api.model.AIResponse;
+import ai.api.model.Fulfillment;
 import ai.api.model.Metadata;
+import ai.api.model.ResponseMessage;
 import ai.api.model.Result;
 import ai.api.model.Status;
 import ai.api.ui.AIDialog;
@@ -154,10 +162,9 @@ public class HogeActivity extends DemoMessagesActivity
     @Override
     public void onResult(final AIResponse response) {
         runOnUiThread(new Runnable() {
+
             @Override
             public void run() {
-                Log.d(TAG, "onResult");
-
                 Log.i(TAG, "Received success response");
 
                 // this is example how to get different parts of result object
@@ -170,12 +177,38 @@ public class HogeActivity extends DemoMessagesActivity
                 messagesAdapter.addToStart(
                         MessageFixtures.getTextMessage(result.getResolvedQuery()), true);
 
+
+                String gsonData = gson.toJson(response.getResult().getFulfillment());
+
+                try {
+                    JSONObject json = new JSONObject(gsonData);
+                    JSONArray rows = json.getJSONArray("messages");
+                    for(int i=0; i<rows.length(); i++){
+                        JSONObject row = rows.getJSONObject(i);
+                        JSONArray speechArray = row.getJSONArray("speech");
+                        for(int j=0;j<speechArray.length();j++){
+                            String speech =  speechArray.get(j).toString();
+                            messagesAdapter.addToStart(
+                                    MessageFixtures.getBotTextMessage(speech), true);
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    return;
+                }
+
+
+
+
                 Log.i(TAG, "Action: " + result.getAction());
                 final String speech = result.getFulfillment().getSpeech();
-                Log.i(TAG, "Speech: " + speech);
-                messagesAdapter.addToStart(
-                        MessageFixtures.getBotTextMessage(result.getFulfillment().getSpeech()), true);
-//                TTS.speak(speech);
+                List<ResponseMessage> responseMessages = result.getFulfillment().getMessages();
+                for (ResponseMessage message:
+                     responseMessages) {
+                    Class<?> class1 = message.getClass();
+                    Log.i(TAG, "Resolved query: " + class1);
+
+                }
 
                 final Metadata metadata = result.getMetadata();
                 if (metadata != null) {

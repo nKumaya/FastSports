@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".HogeActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -28,7 +28,7 @@
         <activity android:name=".DemoMessagesActivity" />
         <activity android:name=".EventDetailActivity" />
         <!--<activity android:name=".AIDialog" />-->
-        <activity android:name=".HogeActivity"></activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
