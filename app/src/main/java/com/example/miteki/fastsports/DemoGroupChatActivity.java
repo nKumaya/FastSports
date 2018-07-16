@@ -10,6 +10,7 @@ import com.example.miteki.fastsports.model.Message;
 import com.example.miteki.fastsports.utils.AppUtils;
 import com.squareup.picasso.Picasso;
 import com.stfalcon.chatkit.commons.ImageLoader;
+import com.stfalcon.chatkit.messages.MessageInput;
 import com.stfalcon.chatkit.messages.MessagesList;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
 
@@ -46,13 +47,13 @@ public class DemoGroupChatActivity extends AppCompatActivity
         this.messagesList = (MessagesList) findViewById(R.id.messagesList);
 
         initActivity();
-        messagesAdapter.addToStart(MessageFixtures.getGroupMessage("Fuga3が参加されました","0", 0), true);
+        messagesAdapter.addToStart(MessageFixtures.getGroupMessage("Fuga3さんが参加しました","0", 0), true);
         messagesAdapter.addToStart(MessageFixtures.getGroupMessage("参加してくれてどうもです！","2", 2), true);
         messagesAdapter.addToStart(MessageFixtures.getGroupMessage("経験者中心でやれればと思います！詳細みてくださいね〜","2", 2), true);
         messagesAdapter.addToStart(MessageFixtures.getGroupMessage("初参加です！大学時代やってました〜よろしくです","3", 3), true);
         messagesAdapter.addToStart(MessageFixtures.getGroupMessage("よろしく！","2", 2), true);
         messagesAdapter.addToStart(MessageFixtures.getGroupMessage("よろしくお願いします〜","3", 3), true);
-        messagesAdapter.addToStart(MessageFixtures.getGroupMessage("Hoge3が参加されました","0", 0), true);
+        messagesAdapter.addToStart(MessageFixtures.getGroupMessage("Hoge3さんが参加しました","0", 0), true);
     }
 
     private void initActivity(){
