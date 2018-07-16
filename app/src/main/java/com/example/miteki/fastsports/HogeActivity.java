@@ -16,11 +16,15 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.miteki.fastsports.common.data.fixtures.MessageFixtures;
+import com.example.miteki.fastsports.model.CardViewModel;
 import com.example.miteki.fastsports.model.Message;
+import com.example.miteki.fastsports.model.User;
 import com.example.miteki.fastsports.utils.AppUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.stfalcon.chatkit.commons.models.IMessage;
+import com.stfalcon.chatkit.messages.MessageHolders;
 import com.stfalcon.chatkit.messages.MessageInput;
 import com.stfalcon.chatkit.messages.MessagesList;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
@@ -31,6 +35,7 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Array;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -74,15 +79,6 @@ public class HogeActivity extends DemoMessagesActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hoge);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
         this.messagesList = (MessagesList) findViewById(R.id.messagesList);
         initAdapter();
 
@@ -112,19 +108,29 @@ public class HogeActivity extends DemoMessagesActivity
     }
 
     private void initAdapter() {
-        super.messagesAdapter = new MessagesListAdapter<>(super.senderId, super.imageLoader);
+        // custom
+        MessageHolders holders = new MessageHolders();
+        holders.registerContentType((byte) 1, CustomViewHolder.class, R.layout.card_list1, R.layout.event_card, new MessageHolders.ContentChecker() {
+            @Override
+            public boolean hasContentFor(IMessage message, byte type) {
+                return true;
+            }
+        });
+        super.messagesAdapter = new MessagesListAdapter<>(super.senderId, holders, super.imageLoader);
         super.messagesAdapter.enableSelectionMode(this);
         super.messagesAdapter.setLoadMoreListener(this);
         super.messagesAdapter.registerViewClickListener(R.id.messageUserAvatar,
-                new MessagesListAdapter.OnMessageViewClickListener<Message>() {
+                new MessagesListAdapter.OnMessageViewClickListener<IMessage>() {
                     @Override
-                    public void onMessageViewClick(View view, Message message) {
+                    public void onMessageViewClick(View view, IMessage message) {
                         AppUtils.showToast(HogeActivity.this,
                                 message.getUser().getName() + " avatar click",
                                 false);
                     }
                 });
         this.messagesList.setAdapter(super.messagesAdapter);
+        User hogeUser = new User("1", "hoge", "", true);
+        messagesAdapter.addToStart(new CardViewModel("1", hogeUser, "aaaaa", new Date()), true);
     }
 
 

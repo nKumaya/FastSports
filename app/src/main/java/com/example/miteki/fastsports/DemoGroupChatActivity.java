@@ -49,9 +49,9 @@ public class DemoGroupChatActivity extends AppCompatActivity
         messagesAdapter.addToStart(MessageFixtures.getGroupMessage("Fuga3が参加されました","0", 0), true);
         messagesAdapter.addToStart(MessageFixtures.getGroupMessage("参加してくれてどうもです！","2", 2), true);
         messagesAdapter.addToStart(MessageFixtures.getGroupMessage("経験者中心でやれればと思います！詳細みてくださいね〜","2", 2), true);
-        messagesAdapter.addToStart(MessageFixtures.getGroupMessage("初参加です！大学時代やってました〜よろしくです","3", 2), true);
+        messagesAdapter.addToStart(MessageFixtures.getGroupMessage("初参加です！大学時代やってました〜よろしくです","3", 3), true);
         messagesAdapter.addToStart(MessageFixtures.getGroupMessage("よろしく！","2", 2), true);
-        messagesAdapter.addToStart(MessageFixtures.getGroupMessage("よろしくお願いします〜","3", 2), true);
+        messagesAdapter.addToStart(MessageFixtures.getGroupMessage("よろしくお願いします〜","3", 3), true);
         messagesAdapter.addToStart(MessageFixtures.getGroupMessage("Hoge3が参加されました","0", 0), true);
     }
 

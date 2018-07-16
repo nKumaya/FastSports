@@ -9,6 +9,7 @@ import android.view.View;
 import com.example.miteki.fastsports.common.data.fixtures.MessageFixtures;
 import com.example.miteki.fastsports.model.Message;
 import com.example.miteki.fastsports.utils.AppUtils;
+import com.stfalcon.chatkit.commons.models.IMessage;
 import com.stfalcon.chatkit.messages.MessageInput;
 import com.stfalcon.chatkit.messages.MessagesList;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
@@ -50,9 +51,9 @@ public abstract class ChatActivity extends DemoMessagesActivity
         super.messagesAdapter.enableSelectionMode(this);
         super.messagesAdapter.setLoadMoreListener(this);
         super.messagesAdapter.registerViewClickListener(R.id.messageUserAvatar,
-                new MessagesListAdapter.OnMessageViewClickListener<Message>() {
+                new MessagesListAdapter.OnMessageViewClickListener<IMessage>() {
                     @Override
-                    public void onMessageViewClick(View view, Message message) {
+                    public void onMessageViewClick(View view, IMessage message) {
                         AppUtils.showToast(ChatActivity.this,
                                 message.getUser().getName() + " avatar click",
                                 false);

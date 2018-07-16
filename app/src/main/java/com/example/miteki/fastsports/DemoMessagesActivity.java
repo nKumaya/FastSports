@@ -15,6 +15,7 @@ import com.example.miteki.fastsports.common.data.fixtures.MessageFixtures;
 import com.example.miteki.fastsports.model.Message;
 import com.squareup.picasso.Picasso;
 import com.stfalcon.chatkit.commons.ImageLoader;
+import com.stfalcon.chatkit.commons.models.IMessage;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
 
 import java.text.SimpleDateFormat;
@@ -30,7 +31,7 @@ public class DemoMessagesActivity extends AppCompatActivity
 
     protected final String senderId = "0";
     protected ImageLoader imageLoader;
-    protected MessagesListAdapter<Message> messagesAdapter;
+    protected MessagesListAdapter<IMessage> messagesAdapter;
 
     private Menu menu;
     private int selectionCount;

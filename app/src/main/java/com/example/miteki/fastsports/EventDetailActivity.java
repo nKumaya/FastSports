@@ -17,7 +17,7 @@ public class EventDetailActivity extends AppCompatActivity {
         joinButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(EventDetailActivity.this, ChatActivity.class);
+                Intent intent = new Intent(EventDetailActivity.this, DemoGroupChatActivity.class);
                 startActivity(intent);
             }
         });
