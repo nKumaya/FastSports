@@ -9,9 +9,11 @@ abstract class FixturesData {
 
     static ArrayList<String> avatars = new ArrayList<String>() {
         {
+            add("https://dl.dropboxusercontent.com/s/sk5k0njazhj7wa8/fastsports_icon.png");
+            add("https://dl.dropboxusercontent.com/s/r6z8szhfgqz4rzr/avator_img1.jpg");
+            add("https://dl.dropboxusercontent.com/s/x74t080ftw9mx1k/avator_img2.jpg");
+            add("https://dl.dropboxusercontent.com/s/dla4ymrg789qcpx/footsall1.png");
             add("http://i.imgur.com/pv1tBmT.png");
-//            add("http://i.imgur.com/pv1tBmT.png");
-
         }
     };
 
@@ -30,8 +32,9 @@ abstract class FixturesData {
 
     static final ArrayList<String> names = new ArrayList<String>() {
         {
-            add("R2D2");
-            add("hoge");
+            add("fuga");
+            add("piyo");
+            add("foo");
         }
     };
 

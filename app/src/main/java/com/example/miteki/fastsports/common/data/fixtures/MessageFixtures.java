@@ -32,6 +32,10 @@ public final class MessageFixtures extends FixturesData{
         return new Message(getRandomId(), getUser(), text);
     }
 
+    public static Message getGroupMessage(String text, String strID, int id) {
+        return new Message(getRandomId(), getGroupUser(strID, id), text);
+    }
+
     public static Message getBotTextMessage() {
         return getBotTextMessage(getWelcomBotMessage());
 
@@ -73,6 +77,11 @@ public final class MessageFixtures extends FixturesData{
 //                even ? names.get(0) : names.get(1),
 //                even ? avatars.get(0) : avatars.get(1),
 //                true);
+    }
+
+    private static User getGroupUser(String strID, int id){
+        return new User(strID, names.get(id), avatars.get(id), true);
+
     }
 
     private static User getBot() {

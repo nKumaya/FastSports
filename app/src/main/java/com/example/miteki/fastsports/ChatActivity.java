@@ -28,29 +28,19 @@ public abstract class ChatActivity extends DemoMessagesActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        this.messagesList = (MessagesList) findViewById(R.id.messagesList);
-        initAdapter();
-
-        MessageInput input = (MessageInput) findViewById(R.id.input);
-        input.setInputListener(this);
     }
 
     @Override
     protected void onStart(){
         super.onStart();
-        messagesAdapter.addToStart(MessageFixtures.getTextMessage(), true);
     }
 
     @Override
     public void onAddAttachments() {
-        super.messagesAdapter.addToStart(
-                MessageFixtures.getImageMessage(), true);
     }
 
     @Override
     public boolean onSubmit(CharSequence input) {
-        super.messagesAdapter.addToStart(
-                MessageFixtures.getTextMessage(input.toString()), true);
 
         return true;
     }
