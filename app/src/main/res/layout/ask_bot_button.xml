@@ -24,12 +24,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minHeight="30dp"
-            android:minWidth="250dp"
+            android:minWidth="230dp"
             android:background="@drawable/ask_button_bg"
             android:layout_marginLeft="30dp"
             android:layout_marginBottom="5dp"
             android:textSize="18dp"
-            android:text="施設までの道のりを教えて" />
+            android:text="施設の場所を教えて" />
 
     </LinearLayout>
 

@@ -94,6 +94,14 @@ public class HogeActivity extends DemoMessagesActivity
         aiDataService = new AIDataService(this, config);
     }
 
+    @Override
+    protected void onStart(){
+        super.onStart();
+        messagesAdapter.addToStart(
+                MessageFixtures.getBotTextMessage("今日はどうしますか？"), true);
+
+    }
+
 
     @Override
     public void onAddAttachments() {
@@ -129,8 +137,8 @@ public class HogeActivity extends DemoMessagesActivity
                     }
                 });
         this.messagesList.setAdapter(super.messagesAdapter);
-        User hogeUser = new User("1", "hoge", "", true);
-        messagesAdapter.addToStart(new CardViewModel("1", hogeUser, "aaaaa", new Date()), true);
+//        User hogeUser = new User("1", "hoge", "", true);
+//        messagesAdapter.addToStart(new CardViewModel("1", hogeUser, "aaaaa", new Date()), true);
     }
 
 
@@ -199,6 +207,7 @@ public class HogeActivity extends DemoMessagesActivity
 
                 String gsonData = gson.toJson(response.getResult().getFulfillment());
 
+                boolean isConversationFinished = false;
                 try {
                     JSONObject json = new JSONObject(gsonData);
                     JSONArray rows = json.getJSONArray("messages");
@@ -209,6 +218,7 @@ public class HogeActivity extends DemoMessagesActivity
                             String speech =  speechArray.get(j).toString();
                             messagesAdapter.addToStart(
                                     MessageFixtures.getBotTextMessage(speech), true);
+                            isConversationFinished = checkConversationFlag(speech);
                         }
                     }
                 } catch (JSONException e) {
@@ -216,8 +226,12 @@ public class HogeActivity extends DemoMessagesActivity
                     return;
                 }
 
-
-
+                if(isConversationFinished){
+                    User hogeUser = new User("1", "hoge", "", true);
+                    messagesAdapter.addToStart(new CardViewModel("1", hogeUser, "aaaaa", new Date()), true);
+                    messagesAdapter.addToStart(
+                            MessageFixtures.getBotTextMessage("こういうのはどうでしょうか"), true);
+                }
 
                 Log.i(TAG, "Action: " + result.getAction());
                 final String speech = result.getFulfillment().getSpeech();
@@ -291,6 +305,13 @@ public class HogeActivity extends DemoMessagesActivity
     public void moveChatActivityOnClick(final View view) {
         Intent intent = new Intent(HogeActivity.this, EventDetailActivity.class);
         startActivity(intent);
+    }
+
+    private boolean checkConversationFlag(String botMessage){
+        if(botMessage.equals("少々お待ちください"))
+            return true;
+        else
+            return false;
     }
 
 }
