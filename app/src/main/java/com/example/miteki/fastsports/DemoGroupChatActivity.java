@@ -47,8 +47,8 @@ public class DemoGroupChatActivity extends AppCompatActivity
         this.messagesList = (MessagesList) findViewById(R.id.messagesList);
 
         initActivity();
-        messagesAdapter.addToStart(MessageFixtures.getGroupMessage("Fuga3さんが参加しました","0", 0), true);
-        messagesAdapter.addToStart(MessageFixtures.getGroupMessage("Hoge3さんが参加しました","0", 0), true);
+        messagesAdapter.addToStart(MessageFixtures.getGroupMessage("Kumaさんが参加しました","0", 0), true);
+        messagesAdapter.addToStart(MessageFixtures.getGroupMessage("Hatasaさんが参加しました","0", 0), true);
     }
 
     private void initActivity(){

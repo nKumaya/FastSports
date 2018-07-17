@@ -50,6 +50,7 @@
             android:layout_alignParentBottom="true"
             app:attachmentButtonDefaultIconColor="@color/green"
             app:attachmentButtonDefaultIconPressedColor="@color/green_dark"
+            app:attachmentButtonIcon="@mipmap/microphone_icon"
             app:inputButtonDefaultBgColor="@color/green"
             app:inputButtonDefaultBgPressedColor="@color/green_dark"
             app:inputCursorDrawable="@drawable/shape_custom_cursor"

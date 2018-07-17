@@ -14,9 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".HogeActivity"
+            android:name=".DemoNoticeActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,8 +26,12 @@
         <activity android:name=".AIDialogActivity" />
         <activity android:name=".DemoMessagesActivity" />
         <activity android:name=".EventDetailActivity" />
-        <activity android:name=".DemoNoticeActivity" />
-        <activity android:name=".DemoGroupChatActivity" />
+        <activity
+            android:name=".HogeActivity"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".DemoGroupChatActivity"
+            android:theme="@style/AppTheme"/>
         <activity android:name=".MainActivity"></activity>
     </application>
 

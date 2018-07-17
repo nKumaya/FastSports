@@ -136,6 +136,7 @@ public class DemoMessagesActivity extends AppCompatActivity
 
     @Override
     public void onSelectionChanged(int count) {
+
     }
 
     private MessagesListAdapter.Formatter<Message> getMessageStringFormatter() {

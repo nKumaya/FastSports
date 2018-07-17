@@ -84,6 +84,8 @@ public class HogeActivity extends DemoMessagesActivity
 
         MessageInput input = (MessageInput) findViewById(R.id.input);
         input.setInputListener(this);
+        input.setAttachmentsListener(this);
+
 
         final AIConfiguration config = new AIConfiguration(Config.ACCESS_TOKEN,
                 AIConfiguration.SupportedLanguages.Japanese,
@@ -99,14 +101,12 @@ public class HogeActivity extends DemoMessagesActivity
         super.onStart();
         messagesAdapter.addToStart(
                 MessageFixtures.getBotTextMessage("今日はどうしますか？"), true);
-
     }
 
 
     @Override
     public void onAddAttachments() {
-        super.messagesAdapter.addToStart(
-                MessageFixtures.getImageMessage(), true);
+        aiDialog.showAndListen();
     }
 
     @Override

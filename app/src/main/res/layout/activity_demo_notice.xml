@@ -55,7 +55,7 @@
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/white"
                         android:textSize="14dp"
-                        android:text="7月19日、20:00~"/>
+                        android:text="7月18日、20:00~"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -113,6 +113,7 @@
                     android:layout_alignParentBottom="true"
                     app:attachmentButtonDefaultIconColor="@color/green"
                     app:attachmentButtonDefaultIconPressedColor="@color/green_dark"
+                    app:attachmentButtonIcon="@mipmap/microphone_icon"
                     app:inputButtonDefaultBgColor="@color/green"
                     app:inputButtonDefaultBgPressedColor="@color/green_dark"
                     app:inputCursorDrawable="@drawable/shape_custom_cursor"
