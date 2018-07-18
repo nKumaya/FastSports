@@ -2,6 +2,7 @@ package com.example.miteki.fastsports;
 
 import android.view.View;
 
+import com.example.miteki.fastsports.model.CardViewModel;
 import com.example.miteki.fastsports.model.CustomButtonViewModel;
 import com.stfalcon.chatkit.messages.MessageHolders;
 

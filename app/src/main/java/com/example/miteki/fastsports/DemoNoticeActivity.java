@@ -2,6 +2,7 @@ package com.example.miteki.fastsports;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Debug;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,6 +12,7 @@ import android.view.View;
 import com.example.miteki.fastsports.common.data.fixtures.MessageFixtures;
 import com.example.miteki.fastsports.model.CardViewModel;
 import com.example.miteki.fastsports.model.CustomButtonViewModel;
+import com.example.miteki.fastsports.model.MapViewModel;
 import com.example.miteki.fastsports.model.User;
 import com.example.miteki.fastsports.utils.AppUtils;
 import com.google.gson.Gson;
@@ -81,6 +83,37 @@ public class DemoNoticeActivity extends DemoMessagesActivity
             @Override
             public boolean hasContentFor(IMessage message, byte type) {
                 return true;
+//                switch (type){
+//                    case 1:
+//                        if(message.getClass()==CustomButtonViewModel.class) return true;
+//                        else return false;
+//                    case 2:
+//                        if(message.getClass()==CustomViewHolder.class) return true;
+//                        else return false;
+//
+//                        default:
+//                            return false;
+//                }
+            }
+        });
+        holders.registerContentType((byte) 2, CustomMapViewHolder.class, R.layout.demo_map_view, R.layout.demo_map_view, new MessageHolders.ContentChecker() {
+            @Override
+            public boolean hasContentFor(IMessage message, byte type) {
+
+                String className = message.getClass().toString();
+                String className2 = CustomButtonViewModel.class.toString();
+
+                switch (type) {
+                    case 1:
+                        if (message.getClass() == CustomButtonViewModel.class) return true;
+                        else return false;
+                    case 2:
+                        if (message.getClass() == MapViewModel.class) return true;
+                        else return false;
+
+                    default:
+                        return false;
+                }
             }
         });
         super.messagesAdapter = new MessagesListAdapter<>(super.senderId, holders, super.imageLoader);
@@ -99,7 +132,7 @@ public class DemoNoticeActivity extends DemoMessagesActivity
     }
 
     private void remindMessages(){
-        messagesAdapter.addToStart(MessageFixtures.getBotTextMessage("いよいよイベントは明日です！"), true);
+        messagesAdapter.addToStart(MessageFixtures.getBotTextMessage("いよいよイベントです！"), true);
         messagesAdapter.addToStart(MessageFixtures.getBotTextMessage("何かわからないことがあれば聞いてください"), true);
         User hogeUser = new User("1", "hoge", "", true);
         messagesAdapter.addToStart(new CustomButtonViewModel("1", hogeUser, "aaaaa", new Date()), true);
@@ -119,6 +152,9 @@ public class DemoNoticeActivity extends DemoMessagesActivity
 
     public void askFee(final View view) {
         sendRequest("料金を教えて");
+    }
+    public void askLocation(final View view) {
+        sendRequest("施設の場所を教えて");
     }
 
     private void sendRequest(String inputQuery) {
@@ -190,6 +226,10 @@ public class DemoNoticeActivity extends DemoMessagesActivity
                             String speech =  speechArray.get(j).toString();
                             messagesAdapter.addToStart(
                                     MessageFixtures.getBotTextMessage(speech), true);
+                            if(speech.equals("こちらです")){
+                                User hogeUser = new User("1", "hoge", "", true);
+                                messagesAdapter.addToStart(new MapViewModel("1", hogeUser, "aaaaa", new Date()), true);
+                            }
                         }
                     }
                 } catch (JSONException e) {

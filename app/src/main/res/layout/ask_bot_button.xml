@@ -29,7 +29,8 @@
             android:layout_marginLeft="30dp"
             android:layout_marginBottom="5dp"
             android:textSize="18dp"
-            android:text="施設の場所を教えて" />
+            android:text="施設の場所を教えて"
+            android:onClick="askLocation"/>
 
     </LinearLayout>
 
