@@ -9,6 +9,7 @@ import android.view.View;
 import com.example.miteki.fastsports.common.data.fixtures.MessageFixtures;
 import com.example.miteki.fastsports.model.Message;
 import com.example.miteki.fastsports.utils.AppUtils;
+import com.stfalcon.chatkit.commons.models.IMessage;
 import com.stfalcon.chatkit.messages.MessageInput;
 import com.stfalcon.chatkit.messages.MessagesList;
 import com.stfalcon.chatkit.messages.MessagesListAdapter;
@@ -28,29 +29,19 @@ public abstract class ChatActivity extends DemoMessagesActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        this.messagesList = (MessagesList) findViewById(R.id.messagesList);
-        initAdapter();
-
-        MessageInput input = (MessageInput) findViewById(R.id.input);
-        input.setInputListener(this);
     }
 
     @Override
     protected void onStart(){
         super.onStart();
-        messagesAdapter.addToStart(MessageFixtures.getTextMessage(), true);
     }
 
     @Override
     public void onAddAttachments() {
-        super.messagesAdapter.addToStart(
-                MessageFixtures.getImageMessage(), true);
     }
 
     @Override
     public boolean onSubmit(CharSequence input) {
-        super.messagesAdapter.addToStart(
-                MessageFixtures.getTextMessage(input.toString()), true);
 
         return true;
     }
@@ -60,9 +51,9 @@ public abstract class ChatActivity extends DemoMessagesActivity
         super.messagesAdapter.enableSelectionMode(this);
         super.messagesAdapter.setLoadMoreListener(this);
         super.messagesAdapter.registerViewClickListener(R.id.messageUserAvatar,
-                new MessagesListAdapter.OnMessageViewClickListener<Message>() {
+                new MessagesListAdapter.OnMessageViewClickListener<IMessage>() {
                     @Override
-                    public void onMessageViewClick(View view, Message message) {
+                    public void onMessageViewClick(View view, IMessage message) {
                         AppUtils.showToast(ChatActivity.this,
                                 message.getUser().getName() + " avatar click",
                                 false);

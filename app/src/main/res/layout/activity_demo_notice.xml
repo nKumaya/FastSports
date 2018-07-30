@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
+    android:fitsSystemWindows="true"
+    android:background="@color/black"
+    tools:openDrawer="start">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DemoNoticeActivity">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/header_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/detail_bg_gradient">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="fitStart"
+                    android:src="@mipmap/soccer" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:textSize="18dp"
+                        android:text="フットサル@田町"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/white"
+                        android:textSize="14dp"
+                        android:text="7月18日、20:00~"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/white"
+                        android:textSize="14dp"
+                        android:text="港区スポーツセンター"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+                <com.stfalcon.chatkit.messages.MessagesList
+                    android:id="@+id/messagesList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/input"
+                    app:dateHeaderFormat="dd MMMM yyyy"
+                    app:incomingDefaultBubbleColor="@color/ivory"
+                    app:incomingDefaultBubblePressedColor="@color/ivory_dark"
+                    app:incomingDefaultBubbleSelectedColor="@color/gray"
+                    app:incomingDefaultImageOverlayPressedColor="@color/black_10"
+                    app:incomingDefaultImageOverlaySelectedColor="@color/gray_transparent"
+                    app:incomingTextColor="@color/black"
+                    app:incomingTextLinkColor="@color/green"
+                    app:incomingTextSize="18sp"
+                    app:outcomingDefaultBubbleColor="@color/green"
+                    app:outcomingDefaultBubblePressedColor="@color/green_dark"
+                    app:outcomingDefaultBubbleSelectedColor="@color/gray_dark_transparent"
+                    app:outcomingDefaultImageOverlayPressedColor="@color/black_10"
+                    app:outcomingDefaultImageOverlaySelectedColor="@color/gray_transparent"
+                    app:outcomingTextColor="@color/white"
+                    app:outcomingTextLinkColor="@color/brown"
+                    app:outcomingTextSize="18sp"
+                    app:textAutoLink="all"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_above="@+id/input"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/gray_light"/>
+
+                <com.stfalcon.chatkit.messages.MessageInput
+                    android:id="@+id/input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    app:attachmentButtonDefaultIconColor="@color/green"
+                    app:attachmentButtonDefaultIconPressedColor="@color/green_dark"
+                    app:attachmentButtonIcon="@mipmap/microphone_icon"
+                    app:inputButtonDefaultBgColor="@color/green"
+                    app:inputButtonDefaultBgPressedColor="@color/green_dark"
+                    app:inputCursorDrawable="@drawable/shape_custom_cursor"
+                    app:inputHint="@string/hint_enter_a_message"
+                    app:showAttachmentButton="true"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+
+        <!--<Button-->
+            <!--android:id="@+id/buttonListen"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Start Listen"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:onClick="buttonListenOnClick"-->
+            <!--/>-->
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.DrawerLayout>

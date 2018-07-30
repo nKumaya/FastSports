@@ -143,14 +143,4 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="454dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:text="経験者歓迎です！毎週木曜日にやってます。社会人多めですが、学生さんもぜひ！"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/guideline2"/>
-
 </android.support.constraint.ConstraintLayout>

@@ -50,6 +50,7 @@
             android:layout_alignParentBottom="true"
             app:attachmentButtonDefaultIconColor="@color/green"
             app:attachmentButtonDefaultIconPressedColor="@color/green_dark"
+            app:attachmentButtonIcon="@mipmap/microphone_icon"
             app:inputButtonDefaultBgColor="@color/green"
             app:inputButtonDefaultBgPressedColor="@color/green_dark"
             app:inputCursorDrawable="@drawable/shape_custom_cursor"
@@ -58,13 +59,13 @@
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/buttonListen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Listen"
-        android:layout_centerHorizontal="true"
-        android:onClick="buttonListenOnClick"
-        />
+    <!--<Button-->
+        <!--android:id="@+id/buttonListen"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Start Listen"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:onClick="buttonListenOnClick"-->
+        <!--/>-->
 
 </android.support.constraint.ConstraintLayout>
