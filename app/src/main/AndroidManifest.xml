@@ -27,7 +27,6 @@
         <activity android:name=".EventDetailActivity" />
         <activity android:name=".DemoNoticeActivity" />
         <activity android:name=".DemoGroupChatActivity" />
-        <activity android:name=".HogeActivity"/>
         <activity android:name=".SearchSportsActivity"></activity>
     </application>
 
