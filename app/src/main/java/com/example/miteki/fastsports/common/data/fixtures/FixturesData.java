@@ -34,15 +34,12 @@ abstract class FixturesData {
     static final ArrayList<String> names = new ArrayList<String>() {
         {
             add("fuga");
-            add("piyo");
-            add("foo");
-            add("foo");
         }
     };
 
-    static final ArrayList<String> messages = new ArrayList<String>() {
+    static final ArrayList<String> welcomeMessages = new ArrayList<String>(){
         {
-            add("アクティビティを探したい時は、「アクティビティを探して」と話しかけてくださいね！");
+            add("今日はどうしますか？");
         }
     };
 
@@ -52,48 +49,15 @@ abstract class FixturesData {
         }
     };
 
-    static final ArrayList<String> demoChatMessages = new ArrayList<String>(){
-        {
-            add("経験者中心でやれればと思います！詳細みてくださいね〜");
-            add("初参加です！大学時代やってました〜よろしくです");
-            add("よろしくお願いします！");
-            add("よろしく〜！");
-        }
-    };
-
     static String getRandomId() {
         return Long.toString(UUID.randomUUID().getLeastSignificantBits());
     }
 
-    static String getRandomAvatar() {
-        return avatars.get(rnd.nextInt(avatars.size()));
-    }
-
-    static String getRandomGroupChatImage() {
-        return groupChatImages.get(rnd.nextInt(groupChatImages.size()));
-    }
-
-    static String getRandomGroupChatTitle() {
-        return groupChatTitles.get(rnd.nextInt(groupChatTitles.size()));
-    }
-
-    static String getRandomName() {
-        return names.get(rnd.nextInt(names.size()));
-    }
-
-    static String getRandomMessage() {
-        return messages.get(rnd.nextInt(messages.size()));
-    }
-
     static String getWelcomBotMessage() {
-        return messages.get(0);
+        return welcomeMessages.get(rnd.nextInt(welcomeMessages.size()));
     }
 
     static String getRandomImage() {
         return images.get(rnd.nextInt(images.size()));
-    }
-
-    static boolean getRandomBoolean() {
-        return rnd.nextBoolean();
     }
 }
