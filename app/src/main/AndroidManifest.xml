@@ -19,23 +19,15 @@
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".AIDialogActivity" />
         <activity android:name=".DemoMessagesActivity" />
         <activity android:name=".EventDetailActivity" />
-        <activity
-            android:name=".DemoNoticeActivity"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".DemoGroupChatActivity"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".MainActivity" />
-        <activity
-            android:name=".HogeActivity"
-            android:theme="@style/AppTheme" />
+        <activity android:name=".DemoNoticeActivity" />
+        <activity android:name=".DemoGroupChatActivity" />
+        <activity android:name=".HogeActivity"/>
         <activity android:name=".SearchSportsActivity"></activity>
     </application>
 

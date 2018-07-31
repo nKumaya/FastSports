@@ -14,7 +14,7 @@ public class WelcomDemoActivity extends AppCompatActivity {
     }
 
     public void startSearchActivity(final View view) {
-        Intent intent = new Intent(WelcomDemoActivity.this, HogeActivity.class);
+        Intent intent = new Intent(WelcomDemoActivity.this, SearchSportsActivity.class);
         startActivity(intent);
     }
 

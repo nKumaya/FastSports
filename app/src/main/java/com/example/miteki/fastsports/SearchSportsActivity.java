@@ -68,10 +68,6 @@ public class SearchSportsActivity extends DemoMessagesActivity
 
     private Gson gson = GsonFactory.getGson();
 
-    public static void open(Context context) {
-        context.startActivity(new Intent(context, HogeActivity.class));
-    }
-
     private MessagesList messagesList;
 
     @Override
