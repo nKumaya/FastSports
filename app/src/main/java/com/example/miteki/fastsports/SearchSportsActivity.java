@@ -96,7 +96,7 @@ public class SearchSportsActivity extends DemoMessagesActivity
     protected void onStart(){
         super.onStart();
         messagesAdapter.addToStart(
-                MessageFixtures.getBotTextMessage("今日はどうしますか？"), true);
+                MessageFixtures.getBotWelcomeMessage(), true);
     }
 
 
@@ -212,8 +212,8 @@ public class SearchSportsActivity extends DemoMessagesActivity
                 }
 
                 if(isConversationFinished){
-                    User hogeUser = new User("1", "hoge", "", true);
-                    messagesAdapter.addToStart(new CardViewModel("1", hogeUser, "aaaaa", new Date()), true);
+                    User dummyUser = new User("1", "dummy", "", true);
+                    messagesAdapter.addToStart(new CardViewModel("1", dummyUser, "aaaaa", new Date()), true);
                     messagesAdapter.addToStart(
                             MessageFixtures.getBotTextMessage("こういうのはどうでしょうか"), true);
                 }

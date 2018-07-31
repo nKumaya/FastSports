@@ -30,6 +30,10 @@ public final class MessageFixtures extends FixturesData{
         return new Message(getRandomId(), getBot(), text);
     }
 
+    public static Message getBotWelcomeMessage() {
+        return new Message(getRandomId(), getBot(), welcomeMessages.get(rnd.nextInt(welcomeMessages.size())));
+    }
+
     private static User getUser() {
         return new User("0", names.get(0), avatars.get(0), true);
     }

@@ -10,24 +10,6 @@ abstract class FixturesData {
     static ArrayList<String> avatars = new ArrayList<String>() {
         {
             add("https://dl.dropboxusercontent.com/s/sk5k0njazhj7wa8/fastsports_icon.png"); // bot
-            add("https://dl.dropboxusercontent.com/s/faaqdot4d9hz7u5/avatar_img1.jpg"); // user
-            add("https://dl.dropboxusercontent.com/s/faaqdot4d9hz7u5/avatar_img1.jpg"); // user1
-            add("https://dl.dropboxusercontent.com/s/x74t080ftw9mx1k/avator_img2.jpg"); // user2
-            add("https://dl.dropboxusercontent.com/s/dla4ymrg789qcpx/footsall1.png");
-            add("http://i.imgur.com/pv1tBmT.png");
-        }
-    };
-
-    static final ArrayList<String> groupChatImages = new ArrayList<String>() {
-        {
-            add("http://i.imgur.com/hRShCT3.png");
-
-        }
-    };
-
-    static final ArrayList<String> groupChatTitles = new ArrayList<String>() {
-        {
-            add("ゆるくフットサル");
         }
     };
 
@@ -51,10 +33,6 @@ abstract class FixturesData {
 
     static String getRandomId() {
         return Long.toString(UUID.randomUUID().getLeastSignificantBits());
-    }
-
-    static String getWelcomBotMessage() {
-        return welcomeMessages.get(rnd.nextInt(welcomeMessages.size()));
     }
 
     static String getRandomImage() {
