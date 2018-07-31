@@ -9,6 +9,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        def properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+        buildConfigField "String", "DASHBOARD_ACCESS_TOKEN", properties.getProperty("dashboardAccessToken")
+        buildConfigField "String", "LANGUAGE_ACCESS_TOKEN", properties.getProperty("languageAccessToken")
     }
     buildTypes {
         release {
@@ -32,3 +36,4 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
+
