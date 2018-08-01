@@ -57,7 +57,7 @@ import ai.api.model.Result;
 import ai.api.model.Status;
 import ai.api.ui.AIDialog;
 
-public class HogeActivity extends DemoMessagesActivity
+public class SearchSportsActivity extends DemoMessagesActivity
         implements MessageInput.InputListener,
         MessageInput.AttachmentsListener,
         AIDialog.AIDialogListener{
@@ -68,16 +68,12 @@ public class HogeActivity extends DemoMessagesActivity
 
     private Gson gson = GsonFactory.getGson();
 
-    public static void open(Context context) {
-        context.startActivity(new Intent(context, HogeActivity.class));
-    }
-
     private MessagesList messagesList;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hoge);
+        setContentView(R.layout.activity_search_sports);
 
         this.messagesList = (MessagesList) findViewById(R.id.messagesList);
         initAdapter();
@@ -100,7 +96,7 @@ public class HogeActivity extends DemoMessagesActivity
     protected void onStart(){
         super.onStart();
         messagesAdapter.addToStart(
-                MessageFixtures.getBotTextMessage("今日はどうしますか？"), true);
+                MessageFixtures.getBotWelcomeMessage(), true);
     }
 
 
@@ -131,14 +127,12 @@ public class HogeActivity extends DemoMessagesActivity
                 new MessagesListAdapter.OnMessageViewClickListener<IMessage>() {
                     @Override
                     public void onMessageViewClick(View view, IMessage message) {
-                        AppUtils.showToast(HogeActivity.this,
+                        AppUtils.showToast(SearchSportsActivity.this,
                                 message.getUser().getName() + " avatar click",
                                 false);
                     }
                 });
         this.messagesList.setAdapter(super.messagesAdapter);
-//        User hogeUser = new User("1", "hoge", "", true);
-//        messagesAdapter.addToStart(new CardViewModel("1", hogeUser, "aaaaa", new Date()), true);
     }
 
 
@@ -148,7 +142,6 @@ public class HogeActivity extends DemoMessagesActivity
         final String queryString = inputQuery;
 
         if (TextUtils.isEmpty(queryString)) {
-//            onError(new AIError(getString(R.string.non_empty_query)));
             return;
         }
 
@@ -192,18 +185,10 @@ public class HogeActivity extends DemoMessagesActivity
 
             @Override
             public void run() {
-                Log.i(TAG, "Received success response");
-
-                // this is example how to get different parts of result object
                 final Status status = response.getStatus();
-                Log.i(TAG, "Status code: " + status.getCode());
-                Log.i(TAG, "Status type: " + status.getErrorType());
-
                 final Result result = response.getResult();
-                Log.i(TAG, "Resolved query: " + result.getResolvedQuery());
                 messagesAdapter.addToStart(
                         MessageFixtures.getTextMessage(result.getResolvedQuery()), true);
-
 
                 String gsonData = gson.toJson(response.getResult().getFulfillment());
 
@@ -227,37 +212,23 @@ public class HogeActivity extends DemoMessagesActivity
                 }
 
                 if(isConversationFinished){
-                    User hogeUser = new User("1", "hoge", "", true);
-                    messagesAdapter.addToStart(new CardViewModel("1", hogeUser, "aaaaa", new Date()), true);
+                    User dummyUser = new User("1", "dummy", "", true);
+                    messagesAdapter.addToStart(new CardViewModel("1", dummyUser, "aaaaa", new Date()), true);
                     messagesAdapter.addToStart(
                             MessageFixtures.getBotTextMessage("こういうのはどうでしょうか"), true);
                 }
 
-                Log.i(TAG, "Action: " + result.getAction());
                 final String speech = result.getFulfillment().getSpeech();
                 List<ResponseMessage> responseMessages = result.getFulfillment().getMessages();
                 for (ResponseMessage message:
-                     responseMessages) {
+                        responseMessages) {
                     Class<?> class1 = message.getClass();
-                    Log.i(TAG, "Resolved query: " + class1);
-
                 }
 
                 final Metadata metadata = result.getMetadata();
                 if (metadata != null) {
-                    Log.i(TAG, "Intent id: " + metadata.getIntentId());
-                    Log.i(TAG, "Intent name: " + metadata.getIntentName());
-                }
-
-                final HashMap<String, JsonElement> params = result.getParameters();
-                if (params != null && !params.isEmpty()) {
-                    Log.i(TAG, "Parameters: ");
-                    for (final Map.Entry<String, JsonElement> entry : params.entrySet()) {
-                        Log.i(TAG, String.format("%s: %s", entry.getKey(), entry.getValue().toString()));
-                    }
                 }
             }
-
         });
     }
 
@@ -274,12 +245,6 @@ public class HogeActivity extends DemoMessagesActivity
 
     @Override
     public void onCancelled() {
-//        runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//                resultTextView.setText("");
-//            }
-//        });
     }
 
     @Override
@@ -303,7 +268,7 @@ public class HogeActivity extends DemoMessagesActivity
     }
 
     public void moveChatActivityOnClick(final View view) {
-        Intent intent = new Intent(HogeActivity.this, EventDetailActivity.class);
+        Intent intent = new Intent(SearchSportsActivity.this, EventDetailActivity.class);
         startActivity(intent);
     }
 

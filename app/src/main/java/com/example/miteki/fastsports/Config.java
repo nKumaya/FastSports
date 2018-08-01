@@ -7,10 +7,4 @@ public abstract class Config {
     public static final LanguageConfig[] languages = new LanguageConfig[]{
             new LanguageConfig("ja", BuildConfig.LANGUAGE_ACCESS_TOKEN),
     };
-
-    public static final String[] events = new String[]{
-            "hello_event",
-            "goodbye_event",
-            "how_are_you_event"
-    };
 }
