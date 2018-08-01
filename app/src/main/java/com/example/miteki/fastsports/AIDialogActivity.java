@@ -40,7 +40,7 @@ public class AIDialogActivity extends BaseActivity implements AIDialog.AIDialogL
 
         resultTextView = (TextView) findViewById(R.id.resultTextView);
 
-        final AIConfiguration config = new AIConfiguration(Config.ACCESS_TOKEN,
+        final AIConfiguration config = new AIConfiguration(BuildConfig.DASHBOARD_ACCESS_TOKEN,
                 AIConfiguration.SupportedLanguages.Japanese,
                 AIConfiguration.RecognitionEngine.System);
 
@@ -130,25 +130,6 @@ public class AIDialogActivity extends BaseActivity implements AIDialog.AIDialogL
         aiDialog.showAndListen();
     }
 
-
-
-//    @Override
-//    public boolean onCreateOptionsMenu(final Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_aibutton_sample, menu);
-//        return true;
-//    }
-
-//    @Override
-//    public boolean onOptionsItemSelected(final MenuItem item) {
-//        final int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            startActivity(AISettingsActivity.class);
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
 
     private void startActivity(Class<?> cls) {
         final Intent intent = new Intent(this, cls);
